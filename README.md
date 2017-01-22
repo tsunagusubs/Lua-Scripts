@@ -1,5 +1,11 @@
 # Lua-Scripts
 Lua scripts for Aegisub by [193hime@TsunaguSubs](https://tsunagusubs.github.io)
+
+Currently available:
+
+[Scroll in text](Animations/Scroll_In.lua)
+
+[Scroll out text](Animations/Scroll_Out.lua)
 ## Usage
 My code is under the [GPLv3 License.](https://www.gnu.org/licenses/gpl.html)
 ## How to Use
