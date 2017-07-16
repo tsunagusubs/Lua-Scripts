@@ -1,6 +1,6 @@
-script_name="Scroll text out"
-script_description="Removes text letter by letter"
-script_author="193hime"
+script_name="Scroll text in"
+script_description="Displays text letter by letter"
+script_author="QSaiki"
 script_version="1.0"
 
 include("karaskel.lua")
@@ -13,6 +13,9 @@ function scroller(sub, sel)
   --Loop through each selected subtitle line
   for si,li in ipairs(sel) do
     local line=sub[li]
+    local startpoint=0
+    --Change this to speed (ms)
+    local endpoint=20
     --Change this to change scrolling speed (ms)
     local speed=20
     local switch=true
@@ -20,10 +23,6 @@ function scroller(sub, sel)
 
     --Preprocess line
     karaskel.preproc_line(sub,meta,styles,line)
-
-    local startpoint=line.duration-(string.len(line.text_stripped)*20)
-    --Change this to speed (ms)
-    local endpoint=startpoint+20
 
     --Add a tag for each char in the line text
     line.text:gsub(".", function(c)
@@ -36,7 +35,7 @@ function scroller(sub, sel)
         if c == " " then
           table.insert(done, c)
         else
-          local tagged="{\\t("..startpoint..","..endpoint..",\\alpha&HFF&)}"..c
+          local tagged="{\\alpha&HFF&\\t("..startpoint..","..endpoint..",\\alpha&H00&)}"..c
           table.insert(done, tagged)
           startpoint=startpoint+speed
           endpoint=endpoint+speed
